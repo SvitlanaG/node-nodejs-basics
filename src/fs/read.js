@@ -1,4 +1,5 @@
 import fsPromises from "node:fs/promises";
+import { throwError } from "../utils/customError.js";
 
 const read = async () => {
   try {
@@ -8,9 +9,8 @@ const read = async () => {
       encoding: "utf8",
     });
     console.log(text);
-  } catch (error) {
-    const errorMessage = "FS operation failed";
-    throw Error(errorMessage);
+  } catch {
+    throwError();
   }
 };
 
