@@ -1,5 +1,14 @@
+import fsPromises from "node:fs/promises";
+import { throwError } from "../utils/customError.js";
+
 const remove = async () => {
-    // Write your code here 
+  try {
+    const pathToFile = "src/fs/files/";
+    const fileName = "fileToRemove.txt";
+    await fsPromises.rm(pathToFile + fileName);
+  } catch {
+    throwError();
+  }
 };
 
 await remove();
